@@ -14,36 +14,27 @@ yum install git python python-level python.pip openssl ansible -y
 ansible --version #to check ansible installed or not 
 
 vi /etc/ansible/hosts #below line number 11 add one group and ip addresses 
-
 [demo]
 private ip of node-1 
 private ip of node-2 
 
 vi /etc/ansible/ansible.cfg  #do few changes in this file 
-
 Uncomment
 #inventory = /etc/ansible/hosts
 # sudo-user = root 
 
 Now create one user, in all the three instances 
-
 adduser ansible  
-
 passwd ansible #give password to in machine 
 
 visudo #line number 101 add ansible user in all node
-
 ansible ALL=(ALL) NOPASSWD: ALL 
 
 vi /etc/ssh/sshd_config   #do it in all service node and other node 
-
 uncomment 
-
 PermitRootLogin yes        #line number 38
 PasswordAuthentication yes     #line number 61 
-
 comment 
-
 #PasswordAuthentication no  # line number 63 
 
 service sshd restart 
